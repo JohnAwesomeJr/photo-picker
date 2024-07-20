@@ -16,14 +16,14 @@ try {
     $mail->isSMTP();                                            // Set mailer to use SMTP
     $mail->Host       = 'smtp.gmail.com';                       // Specify main and backup SMTP servers
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'johnawesomejr@gmail.com';              // SMTP username
-    $mail->Password   = 'qkgfyibddgagnzsl';                     // SMTP password
+    $mail->Username   = '<Gmail Email Address Here>';              // SMTP username
+    $mail->Password   = '<Google App Password (no spaces)>';                     // SMTP password
     $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
     $mail->Port       = 587;                                    // TCP port to connect to
 
     // Recipients
-    $mail->setFrom('johnawesomejr@gmail.com', 'Photo Picker Website');
-    $mail->addAddress('johnawesomejr@gmail.com', 'John');     // Add a recipient
+    $mail->setFrom('<Gmail Email Address Here>', 'Photo Picker Website');
+    $mail->addAddress('<Gmail Email Address Here>', 'Photographer');     // Add a recipient
 
     // Content
     $mail->isHTML(false);                                       // Set email format to plain text
@@ -95,8 +95,8 @@ try {
     <div class="thank-you">Thank You for Your Order</div>
     <div class="contact-info">
         Annalyn will contact you with the finished photos over email.<br>
-        If you have any questions, please reach out to <a href="mailto:annalyn@creativecontentco.com">annalyn@creativecontentco.com</a><br>
-        or by phone <a href="tel:+19039859428">(903) 985-9428</a>.
+        If you have any questions, please reach out to <a href="mailto:<Gmail Email Address Here>">Email Address</a><br>
+        or by phone <a href="tel:+1<phoner number here>">Phone Number</a>.
     </div>
 
     <div class="selected-photos">
