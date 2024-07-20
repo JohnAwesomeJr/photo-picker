@@ -25,7 +25,7 @@ try {
 
     // Recipients
     $mail->setFrom($GLOBAL_emailSender, 'Photo Picker Website');
-    $mail->addAddress($GLOBAL_emailSender, 'Photographer');     // Add a recipient
+    $mail->addAddress($GLOBAL_emailSender, $GLOBAL_photographerName);     // Add a recipient
 
     // Content
     $mail->isHTML(false);                                       // Set email format to plain text
@@ -96,7 +96,7 @@ try {
 <div>
     <div class="thank-you">Thank You for Your Order</div>
     <div class="contact-info">
-        Annalyn will contact you with the finished photos over email.<br>
+        <?= $GLOBAL_photographerName;?> will contact you with the finished photos over email.<br>
         If you have any questions, please reach out to <a href="mailto:<?= $GLOBAL_emailSender; ?>"><?= $GLOBAL_emailSender; ?></a><br>
         or by phone <a href="tel:+1<?= $GLOBAL_phoneNumber; ?>"><?= $GLOBAL_phoneNumber;?></a>.
     </div>
