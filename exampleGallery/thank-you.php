@@ -1,9 +1,11 @@
 <?php
+require '/var/www/html/vendor/env.php';
+require '/var/www/html/vendor/autoload.php';
 // Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 // Load Composer's autoloader
-require 'vendor/autoload.php';
+
 
 $selectedPhotos = $_POST['checkedPhotos'];
 $url = $_POST['url'];
@@ -16,18 +18,18 @@ try {
     $mail->isSMTP();                                            // Set mailer to use SMTP
     $mail->Host       = 'smtp.gmail.com';                       // Specify main and backup SMTP servers
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = '<Gmail Email Address Here>';              // SMTP username
-    $mail->Password   = '<Google App Password (no spaces)>';                     // SMTP password
+    $mail->Username   = $GLOBAL_emailSender;                    // SMTP username
+    $mail->Password   = $GLOBAL_googleAppPassword;              // SMTP password
     $mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
     $mail->Port       = 587;                                    // TCP port to connect to
 
     // Recipients
-    $mail->setFrom('<Gmail Email Address Here>', 'Photo Picker Website');
-    $mail->addAddress('<Gmail Email Address Here>', 'Photographer');     // Add a recipient
+    $mail->setFrom($GLOBAL_emailSender, 'Photo Picker Website');
+    $mail->addAddress($GLOBAL_emailSender, 'Photographer');     // Add a recipient
 
     // Content
     $mail->isHTML(false);                                       // Set email format to plain text
-    $mail->Subject = 'Photos Bought';
+    $mail->Subject = $GLOBAL_emailSubjectLine;
     
     // Construct email body with image names
     $mail->Body = "The Order Info.\n\n";
@@ -95,8 +97,8 @@ try {
     <div class="thank-you">Thank You for Your Order</div>
     <div class="contact-info">
         Annalyn will contact you with the finished photos over email.<br>
-        If you have any questions, please reach out to <a href="mailto:<Gmail Email Address Here>">Email Address</a><br>
-        or by phone <a href="tel:+1<phoner number here>">Phone Number</a>.
+        If you have any questions, please reach out to <a href="mailto:<?= $GLOBAL_emailSender; ?>"><?= $GLOBAL_emailSender; ?></a><br>
+        or by phone <a href="tel:+1<?= $GLOBAL_phoneNumber; ?>"><?= $GLOBAL_phoneNumber;?></a>.
     </div>
 
     <div class="selected-photos">
