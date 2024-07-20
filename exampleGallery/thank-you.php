@@ -1,5 +1,5 @@
 <?php
-require '/var/www/html/vendor/env.php';
+require '/var/www/html/env.php';
 require '/var/www/html/vendor/autoload.php';
 // Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;

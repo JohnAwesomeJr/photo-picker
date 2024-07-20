@@ -1,4 +1,5 @@
 <?php
+require '/var/www/html/env.php';
 // Get the protocol
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
 
@@ -152,7 +153,7 @@ $fullUrl = $protocol . $domain . $path;
                 let totalPrice = 0;
                 checkboxes.forEach(function(checkbox) {
                     if (checkbox.checked) {
-                        totalPrice += 20; // $20 per photo
+                        totalPrice += <?= $GLOBAL_pricePerPhoto;?>; // $ per photo
                     }
                 });
                 totalPriceElement.textContent = totalPrice;
