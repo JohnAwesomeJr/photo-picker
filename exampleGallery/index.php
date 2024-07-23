@@ -37,15 +37,25 @@ $fullUrl = $protocol . $domain . $path;
             align-items:center
         }
         
-        /* Gallery grid */
         .gallery {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
             gap: 20px;
             margin-top: 20px;
-            max-width:900px;
+            max-width: 900px;
+            margin: auto; /* Center the gallery horizontally */
+            padding-top: 80px;
+            padding-bottom: 80px;
+
         }
+
+        /* Media Queries for Responsive Layout */
+        @media screen and (max-width: 876px) { /* Tablet Portrait */
+            .gallery {
+                justify-content: center;
+            }
+        }
+
         
         /* Card styles */
         .card {
@@ -85,10 +95,10 @@ $fullUrl = $protocol . $domain . $path;
             left: 0;
             width: 100%;
             background-color: #ffffff;
-            padding: 10px;
+            padding: 20px;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
         }
         .total-price {
@@ -114,6 +124,8 @@ $fullUrl = $protocol . $domain . $path;
 <form action="<?php echo $_SERVER['REQUEST_URI'];?>thank-you.php" method="post">
 <div class="centerContainer">
 <div class="gallery">
+    <p>Tap or click photos to select them. press the request button to send an email to <?= $GLOBAL_photographerName; ?> with your selection.</p>
+    <p>payment will be collected over Venmo, Zele, Cash App or Square. if none of those payment methods are an option for you we can discuss other options over email.<a href="mailto:<?= $GLOBAL_emailSender; ?>"><?= $GLOBAL_emailSender; ?></a></p>
     <?php
     $photosDir = './photos';
     $photos = scandir($photosDir);
@@ -139,7 +151,7 @@ $fullUrl = $protocol . $domain . $path;
 <div class="sticky-bar">
     <span class="total-price">Total Price: $<span id="total-price">0</span></span>
     <input type='hidden' name="url" value="<?php echo $fullUrl; ?>">
-    <button type="submit" class="buy-button">Buy</button>
+    <button type="submit" class="buy-button">Request Pohotos</button>
 
 </div>
 </form>

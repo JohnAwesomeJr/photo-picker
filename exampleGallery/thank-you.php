@@ -94,7 +94,7 @@ try {
 <body>
 
 <div>
-    <div class="thank-you">Thank You for Your Order</div>
+    <div class="thank-you">Thank You for Your Request</div>
     <div class="contact-info">
         <?= $GLOBAL_photographerName;?> will contact you with the finished photos over email.<br>
         If you have any questions, please reach out to <a href="mailto:<?= $GLOBAL_emailSender; ?>"><?= $GLOBAL_emailSender; ?></a><br>
